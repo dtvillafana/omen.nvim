@@ -1,10 +1,10 @@
-local omen = require "omen"
+local omen = require("omen")
 
-local telescope = require "telescope"
+local telescope = require("telescope")
 
-return telescope.register_extension {
-  setup = function() end,
-  exports = {
-    pick = omen.pick,
-  },
-}
+return telescope.register_extension({
+    setup = function() end,
+    exports = {
+        pick = omen.pick,
+    },
+})

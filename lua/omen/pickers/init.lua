@@ -17,14 +17,14 @@ local pickers = {}
 ---@param picker PickerType
 ---@return OmenPicker
 function pickers.get(picker)
-  return require("omen.pickers." .. picker)
+    return require("omen.pickers." .. picker)
 end
 
 ---Pick with given picker name
 ---@param picker PickerType
 ---@param data PickData
 function pickers.pick(picker, data)
-  pickers.get(picker).pick(data)
+    pickers.get(picker).pick(data)
 end
 
 return pickers

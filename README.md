@@ -6,7 +6,7 @@ Omen is a password manager like plugin for Neovim
 
 
 ## Why?
-I am using `pass` to manage my passwords. I have been using this plugin in my config for months and I
+I am using `gopasspw` to manage my passwords (works identically with `pass`). I have been using this plugin in my config for months and I
 really loved picking my passwords with telescope. So, I want to create a new plugin.
 
 
@@ -27,11 +27,23 @@ Omen needs some external components to work:
 
 ## Installation
 
+With Lazy:
+
+```lua
+{
+    "dtvillafana/omen.nvim",
+    dependencies = {
+        "nvim-telescope/telescope.nvim",
+        "nvim-lua/plenary.nvim",
+    },
+}
+```
+
 With packer:
 
 ```lua
 use {
-  "nacro90/omen.nvim",
+  "dtvillafana/omen.nvim",
   requires = {
     "nvim-lua/telescope.nvim",
     "nvim-lua/plenary.nvim",
