@@ -10,29 +10,51 @@ local register = require("omen.register")
 ---@type OmenOpts
 local active_opts
 
-local function on_selected(file)
-    local decoded = input.decrypt(file, active_opts.passphrase_prompt)
+local function on_selected_otp(file_path)
+    local decoded = input.decrypt_otp(file_path, active_opts.store, active_opts.passphrase_prompt)
     if not decoded then
         return
     end
     register.fill_with_retention(active_opts.register, decoded, active_opts.retention)
 end
 
-function omen.pick()
+local function on_selected_password(file)
+    local decoded = input.decrypt_password(file, active_opts.passphrase_prompt)
+    if not decoded then
+        return
+    end
+    register.fill_with_retention(active_opts.register, decoded, active_opts.retention)
+end
+
+function omen.pick_password()
     if not active_opts then
-        error("Call setup() function to initialize Omen. `:lua require'omen'.setup()")
+        error("Call setup() function to initialize Omen. `:lua require(\"omen\").setup()")
     end
     local pick_data = {
         title = active_opts.title,
         get_files = provider.create_getter(active_opts.store, active_opts.ignored),
         formatter = formatter.create_name_extractor(active_opts.store),
-        on_selected = on_selected,
+        on_selected = on_selected_password,
+    }
+    pickers.pick(active_opts.picker, pick_data)
+end
+
+function omen.pick_otp()
+    if not active_opts then
+        error("Call setup() function to initialize Omen. `:lua require(\"omen\").setup()")
+    end
+    local pick_data = {
+        title = active_opts.title,
+        get_files = provider.create_getter(active_opts.store, active_opts.ignored),
+        formatter = formatter.create_name_extractor(active_opts.store),
+        on_selected = on_selected_otp,
     }
     pickers.pick(active_opts.picker, pick_data)
 end
 
 local function set_default_keymaps()
-    vim.keymap.set("n", "<leader>p", omen.pick)
+    vim.keymap.set("n", "<leader>pp", omen.pick_password)
+    vim.keymap.set("n", "<leader>po", omen.pick_otp)
 end
 
 ---Setup omen

@@ -124,6 +124,7 @@ require("omen").pick()
 ## TODO
 
 - [X] Copy a password file content to a register with a retention
+- [X] OTP support for gopass
 - [ ] Inserting new password to the store
 - [ ] Generating new password for the store
 - [ ] Callbacks and events
