@@ -28,7 +28,7 @@ end
 
 function omen.pick_password()
     if not active_opts then
-        error("Call setup() function to initialize Omen. `:lua require(\"omen\").setup()")
+        error('Call setup() function to initialize Omen. `:lua require("omen").setup()')
     end
     local pick_data = {
         title = active_opts.title,
@@ -41,7 +41,7 @@ end
 
 function omen.pick_otp()
     if not active_opts then
-        error("Call setup() function to initialize Omen. `:lua require(\"omen\").setup()")
+        error('Call setup() function to initialize Omen. `:lua require("omen").setup()')
     end
     local pick_data = {
         title = active_opts.title,

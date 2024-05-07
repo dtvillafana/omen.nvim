@@ -21,7 +21,7 @@ function gopass.get_otp(file_path, store_path, passphrase)
         local result = string.sub(first_string, -keep_len)
         return result
     end
-    local gopass_url = get_gopass_url(path.remove_gpg_ext(file_path), store_path)
+    local gopass_url = get_gopass_url(path.remove_gpg_ext(file_path), store_path):gsub("stores/root/", "")
     local job = Job:new({
         command = "gopass",
         args = {
@@ -48,4 +48,3 @@ function gopass.get_otp(file_path, store_path, passphrase)
 end
 
 return gopass
-
