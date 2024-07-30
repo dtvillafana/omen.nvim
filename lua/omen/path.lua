@@ -35,4 +35,9 @@ function path.remove_gpg_ext(str)
     return str:gsub(".gpg", "")
 end
 
+function path.get_username(str)
+    local username = path.remove_gpg_ext(str:match("([^/]+)$"))
+    return username
+end
+
 return path
