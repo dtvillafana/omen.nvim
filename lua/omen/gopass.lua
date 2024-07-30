@@ -11,6 +11,7 @@ local Job = require("plenary.job")
 ---So the function can be used without the passphrase parameter safely.
 ---@param file_path string @File to be decrypted
 ---@param passphrase string?
+---@param store_path string?
 ---@return string|nil @First line of decoded content
 ---@return string|nil @Error
 function gopass.get_otp(file_path, store_path, passphrase)
