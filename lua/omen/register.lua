@@ -4,10 +4,12 @@ local register = {}
 ---@param regchar string @Register char string
 ---@param content string @Content to be stored in register
 ---@param retention integer @Retention to remove the content in seconds
-function register.fill_with_retention(regchar, content, retention)
+---@param type string @Type type of object being copied to register
+function register.fill_with_retention(regchar, content, retention, type)
     local msg
     if regchar == "+" then
-        msg = "Password copied to clipboard"
+        local fmt = "%s copied to clipboard"
+        msg = fmt:format(type)
     else
         local fmt = "Filled register %s"
         msg = fmt:format(regchar)

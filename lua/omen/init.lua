@@ -16,7 +16,7 @@ local function on_selected_otp(file_path)
     if not decoded then
         return
     end
-    register.fill_with_retention(active_opts.register, decoded, active_opts.retention)
+    register.fill_with_retention(active_opts.register, decoded, active_opts.retention, "OTP")
 end
 
 local function on_selected_password(file)
@@ -24,7 +24,7 @@ local function on_selected_password(file)
     if not decoded then
         return
     end
-    register.fill_with_retention(active_opts.register, decoded, active_opts.retention)
+    register.fill_with_retention(active_opts.register, decoded, active_opts.retention, "Password")
 end
 
 local function on_selected_username(file)
@@ -32,7 +32,7 @@ local function on_selected_username(file)
     if not username then
         return
     end
-    register.fill_with_retention(active_opts.register, username, active_opts.retention)
+    register.fill_with_retention(active_opts.register, username, active_opts.retention, "Username")
 end
 
 function omen.pick_password()
